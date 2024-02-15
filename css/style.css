@@ -1,0 +1,152 @@
+*{
+    font-size:14px;
+    font-weight:500;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#5F5F5F;
+}
+
+#chatbox::-webkit-scrollbar {
+    width: 8px;  
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: #7A6D6D; 
+    
+    border-radius: 10px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+    background: #EDEDED;
+}
+.container {
+    max-width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chatbox {
+    height:60vh;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.message-content {
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #B3B3B3;
+}
+
+.bot-message .message-content {
+    background-color: #B54C48;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 60px;
+}
+
+.input-message {
+    color: #000;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: 10px; 
+    background-color: #ddd;
+}
+
+input[type="text"] {
+    width: calc(100% - 30px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input[type="submit"] {
+    width: 70px;
+    background-color: #d2311c;
+    color: #fff;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+    position: absolute;
+    margin-left: -60px;
+    height: 36.5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px; 
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.user-avatar {
+    float: right;
+    margin-left: 10px; 
+}
+
+.bot-avatar {
+    float: right;
+    margin-left: 10px;
+}
+
+.user-message {
+    width:60%;
+    word-wrap: break-word;
+    clear: both; 
+    text-align: right;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.bot-message {
+    width:70%;
+    word-wrap: break-word;
+    clear: both; 
+    text-align: left; 
+    color: #fff;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: 10px; 
+}
+.input-message {
+    color: #fff;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: 10px; 
+    background-color: #007bff;
+    padding: 10px;
+}
+.button-container{
+    margin-top:10px;
+}
+.button-container button{
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    padding: 5px;
+    font-weight: 600;
+    margin: 3px 0px 3px 0px;}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지봇</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="chatbox">
+            <div class="chat-message bot-message">
+                <img src="img/profile.jpg" class="avatar bot-avatar" alt="Bot Avatar">
+                <div class="message-content">
+                    안녕하세요! 무엇을 도와드릴까요?
+                    <div class="button-container">
+                        <button class="button" onclick="sendMessageFromButton('경조금 문의')">경조금 문의</button>
+                        <button class="button" onclick="sendMessageFromButton('복지 및 포상 문의')">복지 및 포상 문의</button>
+                        <button class="button" onclick="sendMessageFromButton('여비 문의')">여비 문의</button>
+                        <button class="button" onclick="sendMessageFromButton('카페테리아 문의')">카페테리아 문의</button>
+                        <button class="button" onclick="sendMessageFromButton('리조트 문의')">리조트 문의</button>
+                        <button class="button" onclick="sendMessageFromButton('그 외 문의')">그 외 문의</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="메시지를 입력하세요...">
+            <input type="submit" value="전송">
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
