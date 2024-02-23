@@ -50,6 +50,8 @@ function displayUserMessage(message) {
     div.appendChild(avatar);
     chatbox.appendChild(div);
     chatbox.scrollTop = chatbox.scrollHeight;
+
+    displayTime(div, 'user-message-time');
 }
 
 function displayBotMessage(message, callback) {
@@ -78,25 +80,18 @@ function displayBotMessage(message, callback) {
             if (callback) callback(); 
         }
     }, 100); 
+
+    displayTime(div, 'bot-message-time');
 }
 
-// document.getElementById('chatbox').onscroll = function() {scrollFunction()};
-
-// function scrollFunction() {
-//     var chatbox = document.getElementById('chatbox');
-//     if (chatbox.scrollHeight - chatbox.clientHeight <= chatbox.scrollTop) {
-//         document.getElementById("topBtn").style.display = "block";
-//         chatbox.style.height = "calc(100% - 120px)";
-//     } else {
-//         document.getElementById("topBtn").style.display = "none";
-//         chatbox.style.height = "calc(100% - 60px)";
-//     }
-// }
-
-// function topFunction() {
-//     var chatbox = document.getElementById('chatbox');
-//     chatbox.scrollTop = 0;
-// }
+function displayTime(messageElement, timeClass) {
+    const timeDiv = document.createElement('div');
+    timeDiv.classList.add('message-time', timeClass);
+    const now = new Date();
+    const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+    timeDiv.textContent = timeString;
+    messageElement.appendChild(timeDiv);
+}
 
 function toggleHiddenButtons() {
     var hiddenButtons = document.getElementById("hiddenButtons");

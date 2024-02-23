@@ -44,7 +44,17 @@ body {
     font-size:20px;
     line-height: 50px;
     font-weight: 600;
-    border-bottom:2px solid #f3f4f6;
+}
+.sub-post {
+    display: flex;
+    column-gap: 10px;
+    width: 100%;
+    padding: 12px;
+    font-weight: 400;
+    /* background-color: var(--bg-black-lightest, rgba(0, 0, 0, 0.03)); */
+    background:#bc241e;
+    color:#fff;
+    margin-bottom: 20px;
 }
 #chatbox {
     flex: 1;
@@ -101,7 +111,7 @@ input[type="text"] {
 
 input[type="submit"] {
     width: 70px;
-    background-color: #B54C48;
+    background-color: #bc241e;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -139,7 +149,7 @@ input[type="submit"] {
     color: #fff;
     border-radius: 5px;
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 
 .bot-message {
@@ -186,7 +196,7 @@ input[type="submit"] {
 
 #hiddenButtons {
     position: relative;
-    display: inline-block;
+    display: none;
     width: 100%;
     padding: 10pt 10pt;
     background: #f3f4f6;
@@ -247,7 +257,7 @@ input[type="submit"] {
 .hidden-button:hover {
     background-color: #ccc;
 }
-.message-time{
+.bot-message-time{
     display: block; 
     font-size: 12px;
     color: #888;
