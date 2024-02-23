@@ -10,38 +10,55 @@
 <body>
     <div class="container">
         <h1>디지캡_챗봇 XD-BOT</h1>
+        <div class="message-time"></div>
+        <div class="message-time"></div>
         <div id="chatbox">
             <div class="chat-message bot-message">
                 <img src="img/profile.jpg" class="avatar bot-avatar" alt="Bot Avatar">
                 <div class="message-content">
-                    안녕하세요! 무엇을 도와드릴까요?
-                    <div class="button-container">
-                        <button class="button" onclick="sendMessageFromButton('경조금 문의')">경조금 문의</button>
-                        <button class="button" onclick="sendMessageFromButton('복지 및 포상 문의')">복지 및 포상 문의</button>
-                        <button class="button" onclick="sendMessageFromButton('여비 문의')">여비 문의</button>
-                        <button class="button" onclick="sendMessageFromButton('카페테리아 문의')">카페테리아 문의</button>
-                        <button class="button" onclick="sendMessageFromButton('리조트 문의')">리조트 문의</button>
-                    </div>
-                </div>
+                    안녕하세요.<br/>
+                    신한카드 챗봇  XD예요!<br/>
+                    회사 복지 이용 관련 궁금한 점이 생기면,<br/>
+                    언제든지 XD에게 물어보세요.
+                </div> 
             </div>
+            <!-- 유저 메시지 -->
+            <div class="chat-message user-message">
+                <div class="message-content">
+                    유저 메시지입니다.
+                </div>
+                <img src="img/profile.jpg" class="avatar user-avatar" alt="User Avatar">
+               
+            </div>
+            <div class="user-message-time">13:46</div>
+            <!-- 챗봇 메시지 -->
+            <div class="chat-message bot-message">
+                <img src="img/profile.jpg" class="avatar bot-avatar" alt="Bot Avatar">
+                <div class="message-content">
+                    챗봇의 응답입니다.
+                </div>
+               
+            </div>
+            <div class="message-time">13:47</div>
         </div>
         <form id="chat-form">
+            <div id="hiddenButtons">
+                <button class="hidden-button" onclick="sendMessageFromButton('경조금 문의')">경조금 문의</button>
+                <button class="hidden-button" onclick="sendMessageFromButton('복지 및 포상 문의')">복지 및 포상 문의</button>
+                <button class="hidden-button" onclick="sendMessageFromButton('여비 문의')">여비 문의</button>
+                <button class="hidden-button" onclick="sendMessageFromButton('카페테리아 문의')">카페테리아 문의</button>
+            </div>
             <div class="input-container">
                 <input type="text" id="user-input" placeholder="메시지를 입력하세요...">
                 <button id="toggleButtons" onclick="toggleHiddenButtons()">#</button>
-                <div id="hiddenButtons">
-                    <button class="hidden-button" onclick="sendMessageFromButton('경조금 문의')">경조금 문의</button>
-                    <button class="hidden-button" onclick="sendMessageFromButton('복지 및 포상 문의')">복지 및 포상 문의</button>
-                    <button class="hidden-button" onclick="sendMessageFromButton('여비 문의')">여비 문의</button>
-                    <button class="hidden-button" onclick="sendMessageFromButton('카페테리아 문의')">카페테리아 문의</button>
-                </div>
+                <input type="submit" value="전송">
             </div>
-            <input type="submit" value="전송">
         </form>
     </div>
 
     <!-- <button onclick="topFunction()" id="topBtn" title="Go to top">^</button> -->
 
     <script src="js/script.js"></script>
+    
 </body>
 </html>
