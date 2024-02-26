@@ -58,7 +58,7 @@ header h1{
 }
 .input-container {
     position: relative;
-    overflow: visible; /* 수정된 부분: 내부 컨텐츠가 넘치더라도 잘리지 않도록 설정 */
+    overflow: visible; 
 }
 .send_btn{
     position:absolute;
