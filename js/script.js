@@ -112,17 +112,20 @@ function toggleHiddenButtons() {
 function toggleSidebar() {
     var sidebar = document.getElementById('sidebar');
     var container = document.getElementById('container');
+    var header = document.querySelector('header');
     var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
 
     if (sidebar.classList.contains('active')) {
         sidebar.classList.remove('active');
         container.style.marginLeft = "0";
         container.style.width = "100%";
+        header.style.marginLeft = "0"; // Header의 왼쪽 여백을 0으로 설정
         toggleSidebarBtn.style.left = "30px"; 
     } else {
         sidebar.classList.add('active');
         container.style.marginLeft = "400px";
         container.style.width = "calc(100% - 400px)";
+        header.style.marginLeft = "200px"; // Header의 왼쪽 여백을 250px으로 설정
         toggleSidebarBtn.style.left = "430px"; 
     }
 }
@@ -140,3 +143,22 @@ document.getElementById('toggleSidebarBtn').addEventListener('click', function(e
     event.stopPropagation();
     toggleSidebar(); 
 });
+
+document.querySelector('.new-chat').addEventListener('click', function() {
+    const chatMessages = document.querySelectorAll('#chatbox .chat-message');
+
+    chatMessages.forEach(message => {
+        if (message.id !== 'first-message') {
+            message.remove();
+        }
+    });
+
+    const messageTimes = document.querySelectorAll('.message-time');
+    messageTimes.forEach(time => {
+        time.remove();
+    });
+
+    this.blur();
+});
+
+

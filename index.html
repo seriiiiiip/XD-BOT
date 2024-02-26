@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>디지봇</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -20,7 +23,7 @@
      <h1>
         Chat
      </h1>
-     <div class="new-chat-icon">
+     <div class="new-chat">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEDklEQVR4nO2az2tcVRTHP41VUqQqmLTaanVMFP8FC1lUyEBN6FJQZ4qLJhRctCktVSES2kXTxrjpolCqNjRp3YgrLSHVjW611Y0oLqSioGTTThemsUaOnMDhMvPenXn3vXkvfV84DDPz7vlx3z3nnnPuhRIlSpQoJnqBKjAOHNfPqv6+oVEB5oA7wFoTuqP/y3MbDhPASgvDXZLnDrOBcNbTcJdk3IZ482sJqNAroRKz7H8CZvWz1TN/dzMmbAYGgRGN1Ec1agsdBLbGjJ+LebvP6XMDMc8Jn8zwtBp6FWjEKHYpgk+vx3iLqOcaaW+Rm4BR4Bpwrw3//DSCZ9VjvO8ECA2nZfwwcCNC8G/AEnABOANMK00C2yL4jrfw+Th/Frf4ucnYscB20wdcaSJoFfgceBPYlYD/O014z3iOfb/JWOEXDEP6Zq2A28Bp4MlAMlqtAAl4URhIewXUgLuG8b/Ax0A/4V0rdzHgLTV4nemfGqzSQO52gZpj/HVgB+kiN3nAkLPsvwYeJX1UNJNrZZj4+gctfD5YJtjnBLzrGRm/jsOeOUUrOpRUgU8cn0972eeqGhx2on1aAc93JUS5g7vsD4VIb28Yph/RfYgvX4zoCDX0/2dDCBt1kpzQ+3wS9OrqHNPKcky/By14rpkJkAzvvsIuU9WtBkxvC4Oj5u1LYXPf4aqZAKnqfNAD1E3HJwnVlV/X2lgNMwG+Je3+hAmLSzIJXcGgUUIyQF/UA0+A1B5dwahRQjo5vuhRpacDUK1NF+jX/uI5YAsBGxHnKQbeMzofCLkDzFAMnDI6v52U2aRhdpJi4ITRWfRPhGMFXAGzRucjSZkdLGAMuBCy+TlimEk9QMBEqFWC446VVfhCG7K/Mjq/QkK82GEesD9BgtNs7C9tyP7djItrm8fiAS1/280E6wkSnHqCCag4ZbvonxhLHdYCtQ4THHesRPLnPeUeSKNwmzBMvyDfWDS6it5B8Iw5A1jtUiPUBzuBf1RP6V88FZL5UgE6QrMd7lhe2GeY3wK2ky884TRHZfsOih7gOyNADkDzhHmj27faxQ6OqhEiMWEv+cCIc075cprCFoygv0IHmg7vIC0bnS6nLbDPybS+z/hs0OIx4Aejy03g8SwEv+Tc1/uM7hj/jdFB9NmdlfBHgB8dV8h62ds3L3v+61kJf1jvA9hgmLjt1GbAW3aMl5sqmWCLc0QWNN302OfnnWi/kuWbf0jrAGv8uxmlt7NNToBvZunzD2qgW8uoP1hRt1o0ub2lhayiPVpPuxcgfw105CU0pRcZPwS+BP6I6B1IhreHjPGGZ2MjLbqnhdhIWultHF7rgtENbWZM5CDT/B+vBjriakZTevgyrg3MgVBtrBIlSpQogT/+A2GA4MV3hAAGAAAAAElFTkSuQmCC" style="width:30px;">
     </div>
     </header>
@@ -35,11 +38,11 @@
             궁금한 점은 언제든지 문의해주세요.</p>
         </div>
         <div id="chatbox">
-            <div class="chat-message bot-message">
+            <div class="chat-message bot-message" id="first-message">
                 <img src="img/profile.jpg" class="avatar bot-avatar" alt="Bot Avatar">
                 <div class="message-content">
                     안녕하세요.<br/>
-                    신한카드 챗봇  XD예요!<br/>
+                    디지캡 챗봇  XD예요!<br/>
                     회사 복지 이용 관련 궁금한 점이 생기면,<br/>
                     언제든지 XD에게 물어보세요.
                 </div> 
@@ -67,7 +70,7 @@
     <nav class="sidebar" id="sidebar">
         <ul>
             <li>
-                <div class="nav-item">
+                <div class="nav-item new-chat">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAENUlEQVR4nO2ay29NQRjApy3SRjwS71c9ivgXSCxINNGKpQStWLQisdAKoZJKw8LbxkIiKNFiI1Yl0rJh67kRYiEaEtINtVBVPxl3TjJ3eu655zHn3Hvq/JKTm5t75nvcmfnmm29GiIyMjIwUAlQD9cAe4LD6lN+rxUQGWA7cAH7gzg/1+3Ix0QDagRH8Id9rExMF4CLhuCgmSM9HoS3tc37Ew7m3wHn1WYifJYsJwCRgJdCoIvVBFbXlsxeYVqS9DGherFDv1RV570aSTi9Rjj4AhosYdrPIUufZ3njfi+FYl0igAtgCDABj+Oeuh0y5rmPpD5Bsisv5TcBLD8WDQD9wBTgDnFJPJzDXQ66cMiZvi81nOS2Ady5tW207Phu47aJoFOgDdgO1EeR3uMg+67PtOZe2HWFtGQewXvWsznfgNLBAWMBjBNQVaVcX6wgAmoBfmuA/QDcwx4qC/KnlifF+/DEA2Kccdvgig1VkwWlYBcj1vO78C2BhVEdTkQeQm/P6sH8CzLDlaJFMUGZyhZBz/UKBOW8nEyQX7QeNno/deU1/G9HYH9WAO8acj3XYl9VukPxI/CeugBdgJHhNB52fNnq+wsjwrlnzJlpMuO5RERpWvy+zoWyLkeRYXectLJFydLaqnWWr+m5vw0NuY+NwWvxPALXarm7UVnqbGsjt5x36xP8GuWKGw26fbSqBZq3iE+WRcirj97RwGUvPwX1taYFd2KVZlAJyNTyHwQDtZK/ZpCleT/0tf/0B2lWqDdMpC09TkCkgl2hZXwQuATV+2/kpRFwWKQA4ptncYnMFOCtSAHBSs/lIVGGdmrATIgUAxzWbO6MKO5TCESBPhxwORBW2N4UxQJbc7RQ/yR1jOQwEaOcnEXJNcFzaylG4OoDux5rNDUH8HQewJmQesCtsglOg7fsAuj9p7TzL5n6EVantb9BMsDlsglOg7fsANQIHaXdVGL/zUEdZYfYCTWESHJe2ciVa5VNvi/WNG/mXEu6LMgZ4qNnabkvoUu0MYLQUhVA/AIuA38pOWb9YbFN4f7lXhIz1f8C28K2a8G/APFFGAPON4mijbQWVwHNNQbcoI4AezbZnsoodh5J6TYmMCZtFGaCSNf2ccmOcyno1RV+tBprwd5CGNJtuxa1wtpFpvUrybNCwZSbwWrPlIzArCcVrjft692JX6u78U80Gac+6pJRPB97oUyERxfnDXu95uebvSEr5VHUfQA+G0cpOwQPekOH8vqSU1xhHZPbSTX/rfI8R7UeS7Pkpch9gOH80ofT2vMsJ8Mck5/xkGegMA2KrD6otbYva2Di5vU5vItFeqweYFyA/WDrykk+Xush4FXgEfKYwMsPbIJIE2ElpGVMbscZY0lsff8D2Ejg9rK7Xtpc60/wHsM3SEZfb06UOX+QJVIO64xe9jJWRkZGRIQLxF5upWvThhc8YAAAAAElFTkSuQmCC" style="width:30px;">
                     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
