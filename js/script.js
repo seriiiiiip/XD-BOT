@@ -90,7 +90,14 @@ function displayTime(messageElement, timeClass) {
     const now = new Date();
     const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
     timeDiv.textContent = timeString;
-    messageElement.appendChild(timeDiv);
+
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('message-container');
+    messageContainer.appendChild(messageElement);
+    messageContainer.appendChild(timeDiv);
+    
+    chatbox.appendChild(messageContainer);
+    chatbox.scrollTop = chatbox.scrollHeight;
 }
 
 function toggleHiddenButtons() {
@@ -101,3 +108,35 @@ function toggleHiddenButtons() {
         hiddenButtons.style.display = "none";
     }
 }
+
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var container = document.getElementById('container');
+    var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+
+    if (sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        container.style.marginLeft = "0";
+        container.style.width = "100%";
+        toggleSidebarBtn.style.left = "30px"; 
+    } else {
+        sidebar.classList.add('active');
+        container.style.marginLeft = "400px";
+        container.style.width = "calc(100% - 400px)";
+        toggleSidebarBtn.style.left = "430px"; 
+    }
+}
+
+document.addEventListener('click', function(event) {
+    var sidebar = document.getElementById('sidebar');
+    var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+
+    if (sidebar.classList.contains('active') && !event.target.closest('#sidebar') && event.target !== toggleSidebarBtn) {
+        toggleSidebar(); 
+    }
+});
+
+document.getElementById('toggleSidebarBtn').addEventListener('click', function(event) {
+    event.stopPropagation();
+    toggleSidebar(); 
+});
