@@ -114,27 +114,41 @@ function toggleSidebar() {
     var container = document.getElementById('container');
     var header = document.querySelector('header');
     var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+    var toggleTrigger = document.getElementById('trigger');
+    var toggleLabel = document.querySelector('label[for="trigger"]');
+    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
     if (sidebar.classList.contains('active')) {
         sidebar.classList.remove('active');
         container.style.marginLeft = "0";
         container.style.width = "100%";
-        header.style.marginLeft = "0"; // Header의 왼쪽 여백을 0으로 설정
-        toggleSidebarBtn.style.left = "30px"; 
+        toggleSidebarBtn.style.left = "30px";
+        toggleTrigger.checked = false; // 사이드바가 닫힐 때 토글 버튼 해제
+        toggleLabel.querySelector('span:nth-child(1)').style.top = "0";
+        toggleLabel.querySelector('span:nth-child(2)').style.opacity = "1";
+        toggleLabel.querySelector('span:nth-child(3)').style.top = "100%";
+        header.style.marginLeft = viewportWidth > 768 ? "0" : "initial"; // 데스크톱에서만 이동
     } else {
         sidebar.classList.add('active');
         container.style.marginLeft = "400px";
         container.style.width = "calc(100% - 400px)";
-        header.style.marginLeft = "200px"; // Header의 왼쪽 여백을 250px으로 설정
-        toggleSidebarBtn.style.left = "430px"; 
+        toggleSidebarBtn.style.left = "430px";
+        toggleTrigger.checked = true; // 사이드바가 열릴 때 토글 버튼 활성화
+        toggleLabel.querySelector('span:nth-child(1)').style.top = "50%";
+        toggleLabel.querySelector('span:nth-child(2)').style.opacity = "0";
+        toggleLabel.querySelector('span:nth-child(3)').style.top = "50%";
+        header.style.marginLeft = viewportWidth > 768 ? "200px" : "initial"; // 데스크톱에서만 이동
     }
 }
 
 document.addEventListener('click', function(event) {
     var sidebar = document.getElementById('sidebar');
     var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+    var toggleTrigger = document.getElementById('trigger');
+    var toggleLabel = document.querySelector('label[for="trigger"]');
 
-    if (sidebar.classList.contains('active') && !event.target.closest('#sidebar') && event.target !== toggleSidebarBtn) {
+    // 토글 버튼을 제외한 다른 요소를 클릭했을 때 사이드바 닫기
+    if (sidebar.classList.contains('active') && !event.target.closest('#sidebar') && event.target !== toggleSidebarBtn && event.target !== toggleTrigger && event.target !== toggleLabel) {
         toggleSidebar(); 
     }
 });

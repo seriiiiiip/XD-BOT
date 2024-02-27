@@ -60,6 +60,9 @@ header h1{
     top:80px;
     left: 0;
 }
+.chat-form {
+    overflow-y: auto;
+}
 .input-container {
     position: relative;
     overflow: visible; 
@@ -519,6 +522,9 @@ header .new-chat {
         max-height: calc(100vh - 120px);
         background-color: #fff;
         padding: 0;
+    }
+    .chat-form {
+        width: 100%;
     }
     .bot-message {
         width: 100%;
