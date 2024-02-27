@@ -195,3 +195,4 @@ document.querySelector('.new-chat').addEventListener('click', function() {
     });
     this.blur();
 });
+
