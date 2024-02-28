@@ -60,6 +60,7 @@ header {
   height: 80px;
   float: left;
   transition: margin-left 0.5s;
+  position:fixed;
 }
 header h1 {
   text-align: center;
@@ -81,6 +82,7 @@ header h1 {
   transition: margin-left 0.5s ease;
   top: 80px;
   left: 0;
+  position:relative;
 }
 .chat-form {
   overflow-y: auto;
