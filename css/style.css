@@ -58,22 +58,24 @@ button {
 header {
   width: 100%;
   height: 80px;
-  float: left;
   transition: margin-left 0.5s;
+  transition: transform 0.5s ease;
   position:fixed;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
 }
 header h1 {
-  text-align: center;
-  line-height: 80px;
-  font-size: 25px;
+  margin-right: auto;
+    margin-left: auto;
+    line-height: 80px;
+    font-size: 25px;
 }
 
 .container {
   width: 100%;
-  height: calc(100vh - 160px);
-  background-color: #fff;
+  height: calc(100vh - 80px);
   border-radius: 0;
-  box-shadow: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -81,8 +83,7 @@ header h1 {
   z-index: 2;
   transition: margin-left 0.5s ease;
   top: 80px;
-  left: 0;
-  position:relative;
+  position: fixed;
 }
 .chat-form {
   overflow-y: auto;
@@ -440,12 +441,7 @@ input[type='submit'] {
   font-size: 20px;
 }
 #toggleSidebarBtn {
-  width: 25px;
-  height: 20px;
-  position: fixed;
-  top: 30px;
-  left: 30px;
-  z-index: 9999;
+  margin-left:30px;
   border: none;
   cursor: pointer;
   background-color: #fff;
@@ -458,11 +454,9 @@ input[type='submit'] {
 }
 
 header .new-chat {
-  position: fixed;
-  top: 25px;
-  right: 30px;
-  z-index: 1000;
-  cursor: pointer;
+    cursor: pointer;
+    align-items: center;
+    margin-right:30px;
 }
 
 .input-container {

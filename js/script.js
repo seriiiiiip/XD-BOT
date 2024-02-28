@@ -132,7 +132,6 @@ document.getElementById('toggleButtons').addEventListener('click', function(even
     }
 });
 
-// Function to toggle sidebar
 function toggleSidebar() {
     var sidebar = document.getElementById('sidebar');
     var container = document.getElementById('container');
@@ -145,24 +144,33 @@ function toggleSidebar() {
         sidebar.classList.remove('active');
         container.style.marginLeft = '0';
         container.style.width = '100%';
-        toggleSidebarBtn.style.left = '30px';
+        header.style.width = '100%';
         toggleTrigger.checked = false;
         toggleLabel.querySelector('span:nth-child(1)').style.top = '0';
         toggleLabel.querySelector('span:nth-child(2)').style.opacity = '1';
         toggleLabel.querySelector('span:nth-child(3)').style.top = '100%';
-        header.style.marginLeft = viewportWidth > 768 ? '0' : 'initial';
+        if (viewportWidth > 768) { // 모바일 사이즈 이상일 때만 이동
+            header.style.transform = 'translateX(0)';
+        }
     } else {
         sidebar.classList.add('active');
         container.style.marginLeft = '400px';
         container.style.width = 'calc(100% - 400px)';
-        toggleSidebarBtn.style.left = '430px';
+        if (viewportWidth > 768) { // 모바일 사이즈 이상일 때만 이동
+            header.style.width = 'calc(100% - 400px)';
+            header.style.transform = 'translateX(400px)';
+        } else { // 모바일 사이즈 미만이면 이동하지 않음
+            header.style.width = '100%';
+            header.style.transform = 'translateX(0)';
+        }
         toggleTrigger.checked = true;
         toggleLabel.querySelector('span:nth-child(1)').style.top = '50%';
         toggleLabel.querySelector('span:nth-child(2)').style.opacity = '0';
         toggleLabel.querySelector('span:nth-child(3)').style.top = '50%';
-        header.style.marginLeft = viewportWidth > 768 ? '200px' : 'initial';
     }
 }
+
+
 
 // Close sidebar when clicking outside of it
 document.addEventListener('click', function(event) {
