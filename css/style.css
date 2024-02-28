@@ -83,7 +83,7 @@ header h1 {
   z-index: 2;
   transition: margin-left 0.5s ease;
   top: 80px;
-  position: fixed;
+  position: relative;
 }
 .chat-form {
   overflow-y: auto;
