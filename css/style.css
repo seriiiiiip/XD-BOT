@@ -83,9 +83,7 @@ header h1 {
   transition: margin-left 0.5s ease;
   top: 80px;
   position: relative;
-}
-.chat-form {
-  overflow-y: auto;
+  overflow:hidden;
 }
 .input-container {
   position: relative;
@@ -280,10 +278,10 @@ input[id='trigger']:checked + label[for='trigger'] span:nth-child(3) {
 #chatbox {
   flex: 1;
   overflow-y: auto;
+  max-height: calc(100% - 60px);
   padding: 10px;
   border: none;
   border-radius: 5px;
-  margin-bottom: 20px;
   background-color: #fff;
 }
 
@@ -464,6 +462,7 @@ header .new-chat {
 
 #chat-form {
   position: relative;
+  margin-bottom: 0;;
 }
 
 .hidden-button {
