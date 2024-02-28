@@ -70,7 +70,7 @@ header h1 {
 
 .container {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 160px);
   background-color: #fff;
   border-radius: 0;
   box-shadow: none;
