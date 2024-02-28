@@ -281,7 +281,7 @@ input[id='trigger']:checked + label[for='trigger'] span:nth-child(3) {
 #chatbox {
   flex: 1;
   overflow-y: auto;
-  max-height: calc(100% - 60px);
+  /* max-height: calc(100% - 60px); */
   padding: 10px;
   border: none;
   border-radius: 5px;
