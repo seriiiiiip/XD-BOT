@@ -285,7 +285,7 @@ input[id='trigger']:checked + label[for='trigger'] span:nth-child(3) {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #fff; 
 }
 
 .chat-message {
@@ -615,6 +615,8 @@ input::placeholder {
   position:relative;
   display:inline-block;
  border:1px solid #6a5acd;
+ top: 3px;
+    margin-right: 5px;
 }
 .login-form .group label .icon:before,
 .login-form .group label .icon:after{
