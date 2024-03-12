@@ -1,49 +1,38 @@
 const userInput = document.getElementById('user-input');
 const chatbox = document.getElementById('chatbox');
-const hiddenButtons = document.getElementById('hiddenButtons');
+const centerLogo = document.querySelector('.center_logo');
 let botBusy = false;
 
 function sendMessage(message) {
     if (botBusy) return;
     botBusy = true;
     displayUserMessage(message);
-    displayBotMessage('모르겠습니다!', () => {
+    displayBotMessage('다른 질문이 있나요?', () => {
         botBusy = false;
     });
+    hideCenterLogoAndBoxContainer();
+}
+
+function hideCenterLogoAndBoxContainer() {
+    if (centerLogo) centerLogo.style.display = 'none';
+    const boxContainer = document.querySelector('.box-container');
+    if (boxContainer) boxContainer.style.display = 'none';
 }
 
 function sendMessageFromButton(buttonText) {
     if (botBusy) return;
     botBusy = true;
+    hideCenterLogoAndBoxContainer();
     displayUserMessage(buttonText);
     displayBotMessage(`${buttonText}에 대한 질문을 주셨군요!`, () => {
         setTimeout(() => {
-            displayBotMessage('모르겠습니다!', () => {
+            displayBotMessage('다른 질문이 있나요?', () => {
                 botBusy = false;
+                displayBelowMessageButtons();
             });
         }, 1000);
     });
 }
-
-document.getElementById('send-button').addEventListener('click', function(event) {
-    event.preventDefault();
-    const message = userInput.value.trim();
-    if (message !== '') {
-        sendMessage(message);
-        userInput.value = ''; 
-    }
-});
-
-userInput.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); 
-        const message = userInput.value.trim();
-        if (message !== '') {
-            sendMessage(message); 
-            userInput.value = ''; 
-        }
-    }
-});
 
 function displayUserMessage(message) {
     const div = document.createElement('div');
@@ -52,7 +41,7 @@ function displayUserMessage(message) {
     messageContent.classList.add('message-content');
     messageContent.textContent = message;
     const avatar = document.createElement('img');
-    avatar.src = 'img/profile.jpg';
+    avatar.src = 'images/dx_logo_2.png';
     avatar.classList.add('avatar', 'user-avatar');
     div.appendChild(messageContent);
     div.appendChild(avatar);
@@ -65,7 +54,7 @@ function displayBotMessage(message, callback) {
     const div = document.createElement('div');
     div.classList.add('chat-message', 'bot-message');
     const avatar = document.createElement('img');
-    avatar.src = 'img/profile.jpg'; 
+    avatar.src = 'images/dx_logo_2.png';
     avatar.classList.add('avatar', 'bot-avatar');
     div.appendChild(avatar);
     const messageContent = document.createElement('div');
@@ -73,27 +62,38 @@ function displayBotMessage(message, callback) {
     div.appendChild(messageContent);
     chatbox.appendChild(div);
     chatbox.scrollTop = chatbox.scrollHeight;
-    let index = 0; 
+    let index = 0;
     const intervalId = setInterval(() => {
         if (index < message.length) {
-            messageContent.textContent += message.charAt(index); 
-            index++; 
+            messageContent.textContent += message.charAt(index);
+            index++;
         } else {
             clearInterval(intervalId);
-            if (callback) callback(); 
+            if (callback) callback();
         }
-    }, 100); 
+    }, 100);
     displayTime(div, 'bot-message-time');
+
+    if (message === '다른 질문이 있나요?') {
+        displayBelowMessageButtons();
+    }
+}
+
+function displayBelowMessageButtons() {
+    const belowMessageButtons = document.querySelector('.below-message-buttons');
+    if (belowMessageButtons) {
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message-container', 'below-message-container');
+        messageContainer.appendChild(belowMessageButtons);
+        chatbox.appendChild(messageContainer);
+    }
 }
 
 function displayTime(messageElement, timeClass) {
     const timeDiv = document.createElement('div');
     timeDiv.classList.add('message-time', timeClass);
     const now = new Date();
-    const timeString = `${now.getHours().toString().padStart(2, '0')}:${now
-        .getMinutes()
-        .toString()
-        .padStart(2, '0')}`;
+    const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
     timeDiv.textContent = timeString;
     const messageContainer = document.createElement('div');
     messageContainer.classList.add('message-container');
@@ -103,90 +103,51 @@ function displayTime(messageElement, timeClass) {
     chatbox.scrollTop = chatbox.scrollHeight;
 }
 
-const hiddenButtonElements = document.querySelectorAll('.hidden-button');
-hiddenButtonElements.forEach(button => {
-    button.addEventListener('click', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        const buttonText = this.textContent;
-        sendMessageFromButton(buttonText);
-        hiddenButtons.style.display = 'none';
-    });
-});
-
-document.getElementById('toggleButtons').addEventListener('click', function(event) {
-    event.preventDefault(); 
-    if (hiddenButtons.style.display === 'none' || hiddenButtons.style.display === '') {
-        hiddenButtons.style.display = 'block';
-    } else {
-        hiddenButtons.style.display = 'none';
-    }
-});
-
-function toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var container = document.getElementById('container');
-    var header = document.querySelector('header');
-    var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
-    var toggleTrigger = document.getElementById('trigger');
-    var toggleLabel = document.querySelector('label[for="trigger"]');
-    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    if (sidebar.classList.contains('active')) {
-        sidebar.classList.remove('active');
-        container.style.marginLeft = '0';
-        container.style.width = '100%';
-        header.style.width = '100%';
-        toggleTrigger.checked = false;
-        toggleLabel.querySelector('span:nth-child(1)').style.top = '0';
-        toggleLabel.querySelector('span:nth-child(2)').style.opacity = '1';
-        toggleLabel.querySelector('span:nth-child(3)').style.top = '100%';
-        if (viewportWidth > 768) { 
-            header.style.transform = 'translateX(0)';
+userInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        if (event.ctrlKey) {
+            const cursorPos = this.selectionStart;
+            const value = this.value;
+            const before = value.substring(0, cursorPos);
+            const after = value.substring(cursorPos);
+            this.value = before + "\n" + after;
+            this.selectionStart = cursorPos + 1;
+            this.selectionEnd = cursorPos + 1;
+        } else {
+            const message = userInput.value.trim();
+            if (message !== '') {
+                sendMessage(message);
+                userInput.value = '';
+            }
         }
-    } else {
-        sidebar.classList.add('active');
-        container.style.marginLeft = '400px';
-        container.style.width = 'calc(100% - 400px)';
-        if (viewportWidth > 768) { 
-            header.style.width = 'calc(100% - 400px)';
-            header.style.transform = 'translateX(400px)';
-        } else { 
-            header.style.width = '100%';
-            header.style.transform = 'translateX(0)';
-        }
-        toggleTrigger.checked = true;
-        toggleLabel.querySelector('span:nth-child(1)').style.top = '50%';
-        toggleLabel.querySelector('span:nth-child(2)').style.opacity = '0';
-        toggleLabel.querySelector('span:nth-child(3)').style.top = '50%';
-    }
-}
-
-document.addEventListener('click', function(event) {
-    var sidebar = document.getElementById('sidebar');
-    var toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
-    var toggleTrigger = document.getElementById('trigger');
-    var toggleLabel = document.querySelector('label[for="trigger"]');
-    if (sidebar.classList.contains('active') && !event.target.closest('#sidebar') && event.target !== toggleSidebarBtn && event.target !== toggleTrigger && event.target !== toggleLabel && event.target !== hiddenButtons) {
-        toggleSidebar();
     }
 });
 
-document.getElementById('toggleSidebarBtn').addEventListener('click', function(event) {
+document.querySelector('.hamburger-menu').addEventListener('click', function(event) {
     event.stopPropagation();
-    toggleSidebar();
+    const nav = document.getElementById('nav');
+    const header = document.querySelector('header');
+    const main = document.querySelector('.main');
+    const subPost = document.querySelector('.sub-post');
+
+    this.classList.toggle('active'); 
+    sidebar.classList.toggle('active');
+    header.classList.toggle('active');
+    main.classList.toggle('active');
+    subPost.classList.toggle('active');
 });
 
-document.querySelector('.new-chat').addEventListener('click', function() {
-    const chatMessages = document.querySelectorAll('#chatbox .chat-message');
-    chatMessages.forEach(message => {
-        if (message.id !== 'first-message') {
-            message.remove();
-        }
-    });
-    const messageTimes = document.querySelectorAll('.message-time');
-    messageTimes.forEach(time => {
-        time.remove();
-    });
-    this.blur();
+userInput.addEventListener('input', function() {
+    this.style.height = 'auto';
+    const maxHeight = 204;
+    if (this.scrollHeight <= maxHeight) {
+        this.style.height = (this.scrollHeight + 2) + 'px';
+    } else {
+        this.style.height = maxHeight + 'px';
+        this.style.overflowY = 'auto';
+    }
 });
 
+document.querySelector('.dark-mode-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+});
