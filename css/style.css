@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
 * {
   font-size: 14px;
   font-weight: 400;
@@ -203,7 +205,7 @@ nav {
   bottom: 0;
   z-index: 999;
   border-right: 1px solid var(--grayscale-border);
-  background-color: #000;
+  background-color: #2d3439;
   color: #fff;
 }
 
@@ -382,8 +384,8 @@ nav ul li a:hover {
 }
 
 .center_logo p {
-  font-size: 18px; /* 텍스트의 크기를 조정합니다 */
-  color: #333; /* 텍스트의 색상을 지정합니다 */
+  font-size: 18px;
+  color: #333;
 }
 .chat-message {
   margin-bottom: 3px;
@@ -394,13 +396,13 @@ nav ul li a:hover {
 .message-content {
   border-radius: 5px;
   padding: 10px;
-  background-color: #6a5acd;
-  color: #fff;
+  background-color: #f3f4f6;
+  color: #000;
 }
 
 .bot-message .message-content {
-  background-color: #f3f4f6;
-  color: rgb(51, 54, 86);
+  background-color: #5aaadc;
+  color: #fff;
   border-radius: 5px;
   padding: 10px;
   margin-right: 60px;
@@ -421,24 +423,84 @@ nav ul li a:hover {
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius:30px;
 }
-
-textarea {
-  width: calc(100% - 70px);
+textarea::-webkit-scrollbar {
+  width: 0;
+}
+/* textarea#user-input {
+  flex: 1;
   padding: 10px;
-  border: none;
-  outline: none;
-  /* background: rgb(243, 244, 246); */
-  margin-left: 10px;
-  resize: none;
-  height: auto;
-  overflow-y: auto;
+  resize: vertical;
   background:none;
-  scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
-  font-weight: 500;
+  border: none;
+  border-top: 1px solid #ccc;
+  font-weight:500;
   font-family: 'Quicksand', sans-serif;
 }
+.icons {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 
+.icons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+} */
+textarea {
+  min-height: 20px;
+  max-height: 204px;
+  width: calc(100% - 20px);
+  margin-bottom: 60px;
+  border: none;
+  border-top: 1px solid #888;
+  width: 100%;
+  padding:10px;
+  font-weight:500;
+}
+
+.icons {
+  display: flex;
+  position: fixed; 
+  bottom: 15px;
+  left: 10px;
+  z-index: 999; 
+}
+
+.icons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.send-icon {
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  z-index: 999;
+}
+
+.send-icon button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+}
+.icons button i {
+  font-size: 20px;
+  margin-left:10px;
+}
+.send-icon i{
+  font-size:20px;
+  margin-right:10px;
+}
+.icons button:hover {
+  color: #333;
+}
 input[type='submit'] {
   width: 70px;
   border: none;
@@ -531,20 +593,18 @@ header .new-chat {
   align-items: center;
   margin-right: 30px;
 }
-
+.new-chat i{
+  font-size:20px;
+}
 
 /* #chat-form {
   position: relative;
   margin-bottom: 0;
 } */
-#chat-form {
-  width: 100%;
-  background:none;
-  z-index: 1000;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding:20px;
+.chat-form {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 .below-message-buttons {
   display: none; 
@@ -552,6 +612,9 @@ header .new-chat {
 
 .below-message-button {
   margin-right: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 30px;
 }
 
 .hidden-button {
@@ -775,7 +838,7 @@ input::placeholder {
 
 /* 다크 모드일 때 아이콘 색상 변경 */
 .dark-mode {
-  background-color: #333;
+  background-color: #111729;
   color: #fff;
 }
 .dark-mode p{
@@ -791,18 +854,45 @@ input::placeholder {
 .dark-mode .box {
  border:1px solid #fff;
 }
+.dark-mode .message-content{
+  background-color:#5aaadc;
+  color:#fff;
+}
+.dark-mode .user-message .message-content{
+  background-color: #5b6371;
+}
 .dark-mode form{
   border-top:1px solid #fff;
 }
 .dark-mode textarea{
-  border:1px solid #fff;
-  border-radius:20px;
+  border-top: 1px solid #fff;
+  color:#fff;
+   background:none;
+}
+.dark-mode textarea::placeholder{
+  color:#fff;
+}
+.dark-mode .hidden-button{
+  background:none;
+  color:#fff;
+}
+.dark-mode .below-message-button{
+  color:#fff;
 }
 .dark-mode .line{
   background-color:#fff;
 }
 .dark-mode-toggle.dark-mode:before {
   background-color: #fff;
+}
+.dark-mode .new-chat i{
+  color:#fff;
+}
+.dark-mode .icons button i {
+  color: #fff;
+}
+.dark-mode .send-icon i{
+  color:#fff;
 }
 
 @media screen and (max-width: 768px) {
